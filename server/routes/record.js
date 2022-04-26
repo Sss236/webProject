@@ -113,6 +113,11 @@ recordRoutes.route("/books/:id").delete((req, response) => {
     console.log("1 document deleted " + req.params.id);
     response.json(obj);
   });
+  myquery = {name: req.params.id};
+  db_connect.collection("comments").remove(myquery, function (err, obj) {
+    if (err) throw err;
+    console.log("comments deleted " + req.params.id);
+  } );
 });
 
 recordRoutes.route("/users/create").post(function (req, response) {  
@@ -274,6 +279,18 @@ recordRoutes.route("/users/follows").post(function (req, res) {
   let my_query = {me: req.body.me}
   db_connect
     .collection("follows")
+    .find(my_query)
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
+recordRoutes.route("/books/search").post(function (req, res) {
+  let db_connect = dbo.getDb("webProj");
+  let my_query = req.body;
+  db_connect
+    .collection("books")
     .find(my_query)
     .toArray(function (err, result) {
       if (err) throw err;

@@ -24,7 +24,6 @@ export async function checkFollowed(me_id, other_id, setFollowed) {
         });
   }
 
-
 export async function addFollow(me_id, other_id, other_name){
     var newFollow = {me: me_id , other: other_id, other_name: other_name};
     await fetch(`http://${configData.SERVER_IP}:${configData.SERVER_PORT}/users/follow`, {
@@ -161,9 +160,51 @@ export async function getFollows(me_id, setFollows){
       if(data){
         setFollows(data);
       } else {
-        setFollows([]);
+        setFollows(null);
       }
+      })
+      .catch(error => {
+        window.alert(error);
+        return false;
+      });
+}
 
+export async function getRecords(setRecords) {
+  const response = await fetch(`http://${configData.SERVER_IP}:${configData.SERVER_PORT}/books/`);
+
+  if (!response.ok) {
+    const message = `An error occured: ${response.statusText}`;
+    window.alert(message);
+    return;
+  }
+
+  const records = await response.json();
+  setRecords(records);
+}
+
+export async function searchBooks(setRecords, type, value){
+  var query = {};
+  if(type === 'Name'){
+    query.name = {$regex: value};
+  } else if (type === 'Author'){
+    query.author = value;
+  } else if (type === 'Tag'){
+    query.tag = value;
+  }
+  await fetch(`http://${configData.SERVER_IP}:${configData.SERVER_PORT}/books/search`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(query),
+      }).then(response => response.json())
+      .then(data => {
+      console.log(data);
+      if(data){
+        setRecords(data);
+      } else {
+        setRecords([]);
+      }
       })
       .catch(error => {
         window.alert(error);
