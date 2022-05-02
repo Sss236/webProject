@@ -1,0 +1,28 @@
+.greeting {
+    color: gray;
+    width: 50%;
+}
+.green {
+    color:yellowgreen;
+}
+.header{
+    width: 1080px;
+    height: 89px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 27.5px 0;
+}
+.button {
+    transition-duration: 0.4s;
+  }
+  
+.button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+.books-express .list-express .cover {
+    width: 115px;
+    height: 172px;
+    margin-bottom: 7px;
+    overflow: hidden;
+}

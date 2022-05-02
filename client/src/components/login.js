@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-
+import "./login.css";
 import { login } from '../actions/userActions'
 
 const LoginScreen = ({ location, history }) => {
@@ -33,10 +33,11 @@ const LoginScreen = ({ location, history }) => {
   return (
     <div>
       <h1>Sign In</h1>
-      <Form onSubmit={submitHandler}>
+      <Form onSubmit={submitHandler} className="account-form-field ">
         <Form.Group controlId='email'>
           <Form.Label>Email Address</Form.Label>
           <Form.Control
+            className='account-form-input'
             type='email'
             placeholder='Enter email'
             value={email}
@@ -47,14 +48,15 @@ const LoginScreen = ({ location, history }) => {
         <Form.Group controlId='password'>
           <Form.Label>Password</Form.Label>
           <Form.Control
+           className='account-form-input'
             type='password'
             placeholder='Enter password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
-        <Button type='submit' variant='primary'>
+        <br></br>
+        <Button className="button" type='submit' variant='primary'>
           Sign In
         </Button>
       </Form>

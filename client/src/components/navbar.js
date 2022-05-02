@@ -2,7 +2,7 @@ import React from "react";
 
 // We import bootstrap to make our application look better.
 import "bootstrap/dist/css/bootstrap.css";
-
+import "./navbar.css"
 // We import NavLink to utilize the react router.
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,8 +14,9 @@ import { logout } from "../actions/userActions";
 export default function Navbar() {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;  
+  // console.log(userInfo);
   const greeting = (userInfo && typeof userInfo.name !=='undefined') ?
-  <div> Hi  {userInfo.name}</div> : <div> Not Logged in </div>
+  <div className="greeting"> Hi  {userInfo.name}</div> : <div> Not Logged in </div>
   const dispatch = useDispatch();
   const logoutHandler = () => {
     dispatch(logout())
@@ -53,7 +54,7 @@ export default function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="navbar-brand" to="/">
-        <img style={{"width" : 25 + '%'}} src="https://st2.depositphotos.com/1105977/5461/i/600/depositphotos_54615585-stock-photo-old-books-on-wooden-table.jpg"></img>
+        <img style={{"width" : 50 + '%'}} src="https://m.timesofindia.com/thumb/68581755.cms?resizemode=4&width=400"></img>
         </NavLink>
 
         <Col>

@@ -142,7 +142,13 @@ const UserProfile = ({ history }) => {
   }, [])
   
   function EditLink(){
-    return (<Button component={Link} to="/update_profile"> Edit </Button>);
+    return (
+      <Link to="/update_profile">
+      <Button type="button">
+        Edit
+      </Button>
+      </Link>
+    );
   }
 
   function Follow(){

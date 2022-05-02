@@ -1,0 +1,26 @@
+.account-form-field {
+    display: block;
+    width: 18%;
+    position: relative;
+}
+.account-form-input {
+    background: transparent;
+    width: 280px;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    border: 1px solid #E4E6E5;
+}
+.button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+.button {
+    transition-duration: 0.4s;
+    background-color:green;
+    border: green;
+  }
+.create-book {
+    width: 50%;
+}

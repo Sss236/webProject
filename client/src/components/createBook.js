@@ -4,6 +4,7 @@ import {configData} from "../config";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import { useEffect } from "react";
+import "./login.css";
 export default function CreateBook() {
   const [form, setForm] = useState({
     name: "",
@@ -93,7 +94,7 @@ export default function CreateBook() {
   return (
     <div>
       <h3>Create New Book</h3>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="create-book">
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
@@ -168,7 +169,7 @@ export default function CreateBook() {
           <input
             type="submit"
             value="Create book"
-            className="btn btn-primary"
+            className="button btn btn-primary"
           />
         </div>
       </form>
